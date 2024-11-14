@@ -12,7 +12,8 @@ module "eks" {
 
 
   cluster_name    = "${var.project_name}-${var.environment}"
-  cluster_version = "1.30"
+  cluster_version = "1.30"    
+  # need to update cluster version here after upgrading the k8s version in aws console
 
   cluster_endpoint_public_access  = true
 
@@ -40,6 +41,7 @@ module "eks" {
     instance_types = ["m6i.large", "m5.large", "m5n.large", "m5zn.large"]
   }
 
+  # comment and uncomment the blue and green node groups accordingly for creating & deleting while version upgrade
   eks_managed_node_groups = {
     blue = {
       min_size      = 2
