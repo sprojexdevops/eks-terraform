@@ -95,6 +95,7 @@ resource "aws_security_group_rule" "eks_control_plane_bastion" {
   security_group_id = module.eks_control_plane_sg.id
 }
 
+# to allow node to node communication
 resource "aws_security_group_rule" "node_vpc" {
   type              = "ingress"
   from_port         = 0
